@@ -1,7 +1,7 @@
-import { ExpressServer } from './infrastructure/api/ExpressServer.js'
-import { Server } from './infrastructure/api/Server.js'
-import { DailyTrendsApp } from './infrastructure/backend/DailyTrends.js'
-import { Environment } from './infrastructure/config/Environment.js'
+import { ExpressServer } from './infrastructure/api/ExpressServer.ts'
+import { Server } from './infrastructure/api/Server.ts'
+import { DailyTrendsApp } from './infrastructure/backend/DailyTrends.ts'
+import { Environment } from './infrastructure/config/Environment.ts'
 
 let server: Server | undefined
 
