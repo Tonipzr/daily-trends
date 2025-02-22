@@ -1,0 +1,7 @@
+{
+    "imports": [
+      { "resource": "./DailyTrends/application.json" },
+      { "resource": "./shared/application.json" }
+    ]
+  }
+  
