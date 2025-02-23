@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
+    "test:coverage": "jest --coverage --collectCoverageFrom='src/**/*.{ts,tsx}'",
     "lint": "eslint .",
     "dev": "tsx watch ./src/start.ts"
   },
