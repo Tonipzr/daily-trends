@@ -1,0 +1,19 @@
+{
+  "name": "daily-trends",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "keywords": [],
+  "author": "Antonio Pozo Ruiz",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.20.1",
+    "neostandard": "^0.12.1",
+    "typescript": "^5.2.0"
+  }
+}
