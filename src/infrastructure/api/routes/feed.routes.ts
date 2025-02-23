@@ -1,15 +1,11 @@
-import { FeedSearchController } from '../controllers/feed/FeedSearchController.ts'
-import { FeedFindController } from '../controllers/feed/FeedFindController.ts'
-import { FeedSaveController } from '../controllers/feed/FeedSaveController.ts'
 import { Routes } from './Routes.ts'
-import { FeedDeleteController } from '../controllers/feed/FeedDeleteController.ts'
-import { FeedUpdateController } from '../controllers/feed/FeedUpdateController.ts'
+import container from '../../dependencyInjection/index.ts'
 
-const feedSearchController = new FeedSearchController()
-const feedFindController = new FeedFindController()
-const feedSaveController = new FeedSaveController()
-const feedDeleteController = new FeedDeleteController()
-const feedUpdateController = new FeedUpdateController()
+const feedSearchController = container.get('Feed.FeedSearchController')
+const feedFindController = container.get('Feed.FeedFindController')
+const feedSaveController = container.get('Feed.FeedSaveController')
+const feedDeleteController = container.get('Feed.FeedDeleteController')
+const feedUpdateController = container.get('Feed.FeedUpdateController')
 
 export const routes: Routes = [
   {

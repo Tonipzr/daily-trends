@@ -1,9 +1,12 @@
 import { Service } from '../../../../application/shared/Service.ts'
-import container from '../../../dependencyInjection/index.ts'
 import { Controller } from '../Controller.ts'
 
 export class FeedUpdateController implements Controller {
-  private service: Service<void> = container.get('Feed.FeedUpdateService')
+  private service: Service<void>
+
+  constructor (service: Service<void>) {
+    this.service = service
+  }
 
   async run (params: Record<string, string> | undefined, body: any): Promise<unknown> {
     try {
