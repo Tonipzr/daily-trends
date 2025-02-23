@@ -25,7 +25,7 @@ export class FeedUpdateService implements Service<void> {
       url: params.url,
       author: params.author,
       category: params.category,
-      publishedAt: params.published as Date
+      publishedAt: new Date(params.publishedAt as string)
     }
 
     await this.repository.update(params.id, feed)
