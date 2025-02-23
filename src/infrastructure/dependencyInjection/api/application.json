@@ -1,0 +1,27 @@
+{
+    "services": {
+      "Feed.FeedSearchController": {
+        "class": "../../api/controllers/feed/FeedSearchController",
+        "arguments": ["@Feed.FeedSearchService"]
+      },
+      "Feed.FeedFindController": {
+        "class": "../../api/controllers//feed/FeedFindController",
+        "arguments": ["@Feed.FeedFindService"]
+      },
+      "Feed.FeedSaveController": {
+        "class": "../../api/controllers//feed/FeedSaveController",
+        "arguments": ["@Feed.FeedSaveService"]
+      },
+      "Feed.FeedDeleteController": {
+        "class": "../../api/controllers//feed/FeedDeleteController",
+        "arguments": ["@Feed.FeedDeleteService"]
+      },
+      "Feed.FeedUpdateController": {
+        "class": "../../api/controllers//feed/FeedUpdateController",
+        "arguments": ["@Feed.FeedUpdateService"]
+      },
+      "HealthCheck.HealthCheckController": {
+        "class": "../../api/controllers/healthcheck/HealthCheckController"
+      }
+    }
+  }

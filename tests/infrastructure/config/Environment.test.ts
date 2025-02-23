@@ -33,4 +33,9 @@ describe('Environment', () => {
     const { Environment } = await import('../../../src/infrastructure/config/Environment.ts')
     expect(Environment.MONGO_URL).toBe('mongodb://test:27018')
   })
+
+  it('should have a default SERVER_TYPE of express', async () => {
+    const { Environment } = await import('../../../src/infrastructure/config/Environment.ts')
+    expect(Environment.SERVER_TYPE).toBe('express')
+  })
 })

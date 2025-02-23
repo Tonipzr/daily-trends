@@ -3,6 +3,26 @@
       "Feed.FeedRepository": {
         "class": "../../database/mongo/Feed/FeedMongoRepository",
         "arguments": ["@Shared.MongoConnectionManager"]
+      },
+      "Feed.FeedSearchService": {
+        "class": "../../../application/feed/search/FeedSearchService",
+        "arguments": ["@Feed.FeedRepository"]
+      },
+      "Feed.FeedFindService": {
+        "class": "../../../application/feed/find/FeedFindService",
+        "arguments": ["@Feed.FeedRepository"]
+      },
+      "Feed.FeedSaveService": {
+        "class": "../../../application/feed/save/FeedSaveService",
+        "arguments": ["@Feed.FeedRepository"]
+      },
+      "Feed.FeedDeleteService": {
+        "class": "../../../application/feed/delete/FeedDeleteService",
+        "arguments": ["@Feed.FeedRepository"]
+      },
+      "Feed.FeedUpdateService": {
+        "class": "../../../application/feed/update/FeedUpdateService",
+        "arguments": ["@Feed.FeedRepository"]
       }
     }
   }

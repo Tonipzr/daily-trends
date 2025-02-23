@@ -13,7 +13,7 @@ export class FeedMongoRepository extends MongoRepository implements Repository {
       author: String,
       category: String,
       publishedAt: Date
-    })
+    }, { timestamps: true })
 
     client.then(client => {
       this.model = client.model('Feed', feedSchema)
@@ -38,5 +38,9 @@ export class FeedMongoRepository extends MongoRepository implements Repository {
     const result = await (this.model as mongoose.Model<IFeed>).deleteOne({ _id: id })
 
     return result.deletedCount === 1
+  }
+
+  async update (id: string, feed: IFeed): Promise<void> {
+    await (this.model as mongoose.Model<IFeed>).updateOne({ _id: id }, feed)
   }
 }
