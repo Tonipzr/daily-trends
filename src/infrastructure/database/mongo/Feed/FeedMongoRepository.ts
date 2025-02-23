@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose'
 import { Repository } from '../../../../domain/shared/Repository.ts'
 import { MongoRepository } from '../MongoRepository.ts'
-import { IFeed } from '../../../../domain/Feed/Feed.ts'
+import { IFeed, sourcesValues } from '../../../../domain/Feed/Feed.ts'
 
 export class FeedMongoRepository extends MongoRepository implements Repository {
   constructor (client: Promise<mongoose.Connection>) {
@@ -10,9 +10,15 @@ export class FeedMongoRepository extends MongoRepository implements Repository {
     const feedSchema = new Schema<IFeed>({
       title: String,
       subTitle: String,
-      url: String,
+      url: {
+        type: String,
+        unique: true
+      },
       author: String,
-      source: String,
+      source: {
+        type: String,
+        enum: sourcesValues
+      },
       publishedAt: Date
     }, { timestamps: true })
 
