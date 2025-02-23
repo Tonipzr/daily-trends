@@ -35,4 +35,8 @@ describe('FeedSearchService', () => {
     expect(result).toEqual(null)
     mockRepository.assertSearchCalledWith('1')
   })
+
+  it('should throw an error if invalid params', async () => {
+    await expect(service.execute({})).rejects.toThrow('Invalid params')
+  })
 })
