@@ -1,5 +1,5 @@
 import express from 'express'
-import { Server } from './Server.js'
+import { Server } from './Server.ts'
 
 export class ExpressServer extends Server {
   start (): Promise<void> {

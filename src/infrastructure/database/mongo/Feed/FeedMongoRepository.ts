@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose'
-import { Repository } from '../../../../domain/shared/Repository.js'
-import { MongoRepository } from '../MongoRepository.js'
-import { IFeed } from '../../../../domain/Feed/Feed.js'
+import { Repository } from '../../../../domain/shared/Repository.ts'
+import { MongoRepository } from '../MongoRepository.ts'
+import { IFeed } from '../../../../domain/Feed/Feed.ts'
 
 export class FeedMongoRepository extends MongoRepository implements Repository {
   constructor (client: Promise<mongoose.Connection>) {
