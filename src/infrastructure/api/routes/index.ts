@@ -11,7 +11,7 @@ export function registerRoutes () : void {
 }
 
 async function register (routePath: string) : Promise<void> {
-  const route = await import(`file:\\\\${routePath}`)
+  const route = await import(`file:\\\\${routePath}`) // FIXME: This is a workaround to make the import work in windows
 
   const server: Server = container.get('Shared.Server')
 
