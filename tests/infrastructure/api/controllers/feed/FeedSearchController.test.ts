@@ -1,6 +1,6 @@
-import { Service } from '../../../../src/application/shared/Service.ts'
-import { IFeed } from '../../../../src/domain/Feed/Feed.ts'
-import { FeedSearchController } from '../../../../src/infrastructure/api/controllers/feed/FeedSearchController.ts'
+import { Service } from '../../../../../src/application/shared/Service.ts'
+import { IFeed } from '../../../../../src/domain/Feed/Feed.ts'
+import { FeedSearchController } from '../../../../../src/infrastructure/api/controllers/feed/FeedSearchController.ts'
 
 describe('FeedSearchController', () => {
   let controller: FeedSearchController

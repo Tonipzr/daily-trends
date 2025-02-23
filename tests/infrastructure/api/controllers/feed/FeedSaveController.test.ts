@@ -1,5 +1,5 @@
-import { Service } from '../../../../src/application/shared/Service.ts'
-import { FeedSaveController } from '../../../../src/infrastructure/api/controllers/feed/FeedSaveController.ts'
+import { Service } from '../../../../../src/application/shared/Service.ts'
+import { FeedSaveController } from '../../../../../src/infrastructure/api/controllers/feed/FeedSaveController.ts'
 
 describe('FeedSaveController', () => {
   let controller: FeedSaveController
