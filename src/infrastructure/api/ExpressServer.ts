@@ -53,8 +53,7 @@ export class ExpressServer extends Server {
         this.expressApp.delete(route.path, this.handleRequestWithFunction(route.handler as unknown as RequestHandler))
         break
       default:
-        console.error('Invalid method')
-        break
+        throw new Error('Invalid HTTP method')
     }
   }
 
