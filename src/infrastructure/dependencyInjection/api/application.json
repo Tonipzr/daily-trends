@@ -19,6 +19,9 @@
       "Feed.FeedUpdateController": {
         "class": "../../api/controllers//feed/FeedUpdateController",
         "arguments": ["@Feed.FeedUpdateService"]
+      },
+      "HealthCheck.HealthCheckController": {
+        "class": "../../api/controllers/healthcheck/HealthCheckController"
       }
     }
   }
