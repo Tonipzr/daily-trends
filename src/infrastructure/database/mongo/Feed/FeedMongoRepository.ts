@@ -9,9 +9,10 @@ export class FeedMongoRepository extends MongoRepository implements Repository {
 
     const feedSchema = new Schema<IFeed>({
       title: String,
+      subTitle: String,
       url: String,
       author: String,
-      category: String,
+      source: String,
       publishedAt: Date
     }, { timestamps: true })
 

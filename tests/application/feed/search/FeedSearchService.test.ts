@@ -15,9 +15,10 @@ describe('FeedSearchService', () => {
   it('should return the feed', async () => {
     const fakeFeed: IFeed = {
       title: 'Title 1',
+      subTitle: 'SubTitle 1',
       url: 'URL 1',
       author: 'Description 1',
-      category: 'Content 1',
+      source: 'Custom',
       publishedAt: new Date()
     }
 
