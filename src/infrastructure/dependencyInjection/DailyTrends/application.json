@@ -1,0 +1,8 @@
+{
+    "services": {
+      "Feed.FeedRepository": {
+        "class": "../../database/mongo/Feed/FeedMongoRepository",
+        "arguments": ["@Shared.MongoConnectionManager"]
+      }
+    }
+  }

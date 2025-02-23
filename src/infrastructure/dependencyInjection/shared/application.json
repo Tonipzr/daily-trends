@@ -1,0 +1,11 @@
+{
+    "services": {
+      "Shared.MongoConnectionManager": {
+        "factory": {
+          "class": "../../database/mongo/MongoClientFactory",
+          "method": "createClient"
+        },
+        "arguments": ["daily-trends"]
+      }
+    }
+  }
