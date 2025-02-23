@@ -1,4 +1,5 @@
 import * as http from 'node:http'
+import { Route } from './routes/Routes.ts'
 
 export abstract class Server {
   private readonly _port: number
@@ -22,4 +23,5 @@ export abstract class Server {
 
   abstract start (): void
   abstract stop (): void
+  abstract registerRoute (route: Route): void
 }
