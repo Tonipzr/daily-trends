@@ -14,7 +14,7 @@ export class WinstonLogger implements Logger {
         winston.format.simple()
       ),
       transports: [
-        new winston.transports.Console(),
+        new winston.transports.Console({ level: 'debug' }),
       ],
     })
   }

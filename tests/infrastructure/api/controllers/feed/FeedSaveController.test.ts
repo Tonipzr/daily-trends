@@ -16,9 +16,10 @@ describe('FeedSaveController', () => {
   it('should send the params to the service', async () => {
     const feedBody = {
       title: 'string',
+      subTitle: 'string',
       url: 'string',
       author: 'string',
-      category: 'string',
+      source: 'Custom',
       publishedAt: new Date().toISOString()
     }
 

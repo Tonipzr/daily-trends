@@ -1,4 +1,5 @@
 import { IFeed, Sources, sourcesValues } from '../../../domain/Feed/Feed.ts'
+import { InvalidArgumentError } from '../../../domain/shared/error/InvalidArgumentError.ts'
 import { Repository } from '../../../domain/shared/Repository.ts'
 import { Service } from '../../shared/Service.ts'
 
@@ -18,7 +19,7 @@ export class FeedUpdateService implements Service<void> {
         (!params.author || typeof params.author !== 'string') ||
         (!params.source || typeof params.source !== 'string' || !sourcesValues.includes(params.source as Sources)) ||
         (!params.publishedAt || typeof params.publishedAt !== 'string' || isNaN(new Date(params.publishedAt).getTime()))) {
-      throw new Error('Invalid params')
+      throw new InvalidArgumentError('Invalid params')
     }
 
     const feed: IFeed = {

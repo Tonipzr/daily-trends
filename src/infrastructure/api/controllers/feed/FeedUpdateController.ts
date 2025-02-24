@@ -1,4 +1,6 @@
 import { Service } from '../../../../application/shared/Service.ts'
+import { Sources, sourcesValues } from '../../../../domain/Feed/Feed.ts'
+import { InvalidArgumentError } from '../../../../domain/shared/error/InvalidArgumentError.ts'
 import { Controller } from '../Controller.ts'
 
 export class FeedUpdateController implements Controller {
@@ -9,20 +11,28 @@ export class FeedUpdateController implements Controller {
   }
 
   async run (params: Record<string, string> | undefined, body: any): Promise<unknown> {
-    try {
-      const parameters: Record<string, unknown> = {
-        id: params?.id || '',
-        title: body.title || '',
-        url: body.url || '',
-        author: body.author || '',
-        category: body.category || '',
-        publishedAt: body.publishedAt || ''
-      }
-      await this.service.execute(parameters)
-
-      return true
-    } catch (error) {
-      return (error as Error).message
+    if (!params ||
+            (!params.id || typeof params.id !== 'string') ||
+            (!body.title || typeof body.title !== 'string') ||
+            (!body.subTitle || typeof body.subTitle !== 'string') ||
+            (!body.url || typeof body.url !== 'string') ||
+            (!body.author || typeof body.author !== 'string') ||
+            (!body.source || typeof body.source !== 'string' || !sourcesValues.includes(body.source as Sources)) ||
+            (!body.publishedAt || typeof body.publishedAt !== 'string' || isNaN(new Date(body.publishedAt).getTime()))) {
+      throw new InvalidArgumentError('Invalid params')
     }
+
+    const parameters: Record<string, unknown> = {
+      id: params?.id || '',
+      title: body.title || '',
+      subTitle: body.subTitle || '',
+      url: body.url || '',
+      author: body.author || '',
+      source: body.source || '',
+      publishedAt: body.publishedAt || ''
+    }
+    await this.service.execute(parameters)
+
+    return true
   }
 }

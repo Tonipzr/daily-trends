@@ -18,9 +18,10 @@ describe('FeedSaveController', () => {
 
     const feedBody = {
       title: 'string',
+      subTitle: 'string',
       url: 'string',
       author: 'string',
-      category: 'string',
+      source: 'Custom',
       publishedAt: new Date().toISOString()
     }
 

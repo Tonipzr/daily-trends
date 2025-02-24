@@ -89,9 +89,7 @@ describe('FeedScrapeController', () => {
     const mockError = new Error('error message')
     mockService.execute.mockRejectedValue(mockError)
 
-    const result = await controller.run(undefined, { save: true })
-
-    expect(result).toBe(mockError.message)
+    expect(controller.run(undefined, { save: true })).rejects.toThrow(mockError.message)
     expect(mockService.execute).toHaveBeenCalled()
     expect(mockFeedSaveService.execute).not.toHaveBeenCalled()
   })
