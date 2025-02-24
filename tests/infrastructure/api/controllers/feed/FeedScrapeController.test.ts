@@ -1,6 +1,6 @@
-import { Service } from '../../../../../src/application/shared/Service.ts'
-import { IFeed, Sources } from '../../../../../src/domain/Feed/Feed.ts'
-import { FeedScrapeController } from '../../../../../src/infrastructure/api/controllers/feed/FeedScrapeController.ts'
+import { Service } from '../../../../../src/application/shared/Service'
+import { IFeed, Sources } from '../../../../../src/domain/Feed/Feed'
+import { FeedScrapeController } from '../../../../../src/infrastructure/api/controllers/feed/FeedScrapeController'
 
 describe('FeedScrapeController', () => {
   let mockService: jest.Mocked<Service<IFeed[]>>

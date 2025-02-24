@@ -1,5 +1,5 @@
-import { Service } from '../../../../../src/application/shared/Service.ts'
-import { FeedDeleteController } from '../../../../../src/infrastructure/api/controllers/feed/FeedDeleteController.ts'
+import { Service } from '../../../../../src/application/shared/Service'
+import { FeedDeleteController } from '../../../../../src/infrastructure/api/controllers/feed/FeedDeleteController'
 
 describe('FeedDeleteController', () => {
   let controller: FeedDeleteController

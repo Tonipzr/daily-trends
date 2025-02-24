@@ -1,11 +1,11 @@
-import { ExpressServer } from './infrastructure/api/ExpressServer.ts'
-import { FastifyServer } from './infrastructure/api/FastifyServer.ts'
-import { registerRoutes } from './infrastructure/api/routes/index.ts'
-import { Server } from './infrastructure/api/Server.ts'
-import { DailyTrendsApp } from './infrastructure/backend/DailyTrends.ts'
-import { Environment } from './infrastructure/config/Environment.ts'
-import container from './infrastructure/dependencyInjection/index.ts'
-import './infrastructure/logger/WinstonLogger.ts'
+import { ExpressServer } from './infrastructure/api/ExpressServer'
+import { FastifyServer } from './infrastructure/api/FastifyServer'
+import { registerRoutes } from './infrastructure/api/routes/index'
+import { Server } from './infrastructure/api/Server'
+import { DailyTrendsApp } from './infrastructure/backend/DailyTrends'
+import { Environment } from './infrastructure/config/Environment'
+import container from './infrastructure/dependencyInjection/index'
+import './infrastructure/logger/WinstonLogger'
 
 if (process.argv && process.argv.length > 0) {
   const args = process.argv.slice(2)
@@ -35,10 +35,11 @@ if (!container.has('Shared.Server')) {
 
 const server: Server = container.get('Shared.Server')
 
-await registerRoutes()
-
-new DailyTrendsApp(server).start().catch(
-  (error) => {
-    logger.error(error)
-  }
-)
+registerRoutes()
+  .then(() => {
+    new DailyTrendsApp(server).start().catch(
+      (error) => {
+        logger.error(error)
+      }
+    )
+  })

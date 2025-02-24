@@ -1,5 +1,5 @@
 import winston from 'winston'
-import { WinstonLogger } from '../../../src/infrastructure/logger/WinstonLogger.ts'
+import { WinstonLogger } from '../../../src/infrastructure/logger/WinstonLogger'
 
 jest.mock('winston', () => ({
   createLogger: jest.fn().mockReturnValue({

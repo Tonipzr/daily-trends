@@ -1,7 +1,7 @@
-import { IFeed } from '../../../domain/Feed/Feed.ts'
-import { InvalidArgumentError } from '../../../domain/shared/error/InvalidArgumentError.ts'
-import { Repository } from '../../../domain/shared/Repository.ts'
-import { Service } from '../../shared/Service.ts'
+import { IFeed } from '../../../domain/Feed/Feed'
+import { InvalidArgumentError } from '../../../domain/shared/error/InvalidArgumentError'
+import { Repository } from '../../../domain/shared/Repository'
+import { Service } from '../../shared/Service'
 
 export class FeedSearchService implements Service<IFeed> {
   private repository: Repository

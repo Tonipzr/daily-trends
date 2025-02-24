@@ -1,6 +1,6 @@
-import { IFeed } from '../../../domain/Feed/Feed.ts'
-import { Repository } from '../../../domain/shared/Repository.ts'
-import { Service } from '../../shared/Service.ts'
+import { IFeed } from '../../../domain/Feed/Feed'
+import { Repository } from '../../../domain/shared/Repository'
+import { Service } from '../../shared/Service'
 
 export class FeedFindService implements Service<IFeed[]> {
   private repository: Repository

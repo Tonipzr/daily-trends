@@ -1,4 +1,4 @@
-import { Server } from '../api/Server.ts'
+import { Server } from '../api/Server'
 
 export class DailyTrendsApp {
   private server: Server

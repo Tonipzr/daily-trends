@@ -1,6 +1,6 @@
-import { Service } from '../../../../application/shared/Service.ts'
-import { IFeed } from '../../../../domain/Feed/Feed.ts'
-import { Controller } from '../Controller.ts'
+import { Service } from '../../../../application/shared/Service'
+import { IFeed } from '../../../../domain/Feed/Feed'
+import { Controller } from '../Controller'
 
 export class FeedScrapeController implements Controller {
   private service: Service<IFeed[]>

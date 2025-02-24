@@ -1,7 +1,7 @@
-import { Service } from '../../../../../src/application/shared/Service.ts'
-import { IFeed } from '../../../../../src/domain/Feed/Feed.ts'
-import { InvalidArgumentError } from '../../../../../src/domain/shared/error/InvalidArgumentError.ts'
-import { FeedSearchController } from '../../../../../src/infrastructure/api/controllers/feed/FeedSearchController.ts'
+import { Service } from '../../../../../src/application/shared/Service'
+import { IFeed } from '../../../../../src/domain/Feed/Feed'
+import { InvalidArgumentError } from '../../../../../src/domain/shared/error/InvalidArgumentError'
+import { FeedSearchController } from '../../../../../src/infrastructure/api/controllers/feed/FeedSearchController'
 
 describe('FeedSearchController', () => {
   let controller: FeedSearchController

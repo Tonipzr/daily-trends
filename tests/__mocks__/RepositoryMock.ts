@@ -1,4 +1,4 @@
-import { Repository } from '../../src/domain/shared/Repository.ts'
+import { Repository } from '../../src/domain/shared/Repository'
 
 export class RepositoryMock implements Repository {
   private mockSearch = jest.fn()

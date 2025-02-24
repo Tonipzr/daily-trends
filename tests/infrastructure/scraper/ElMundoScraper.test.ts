@@ -1,6 +1,6 @@
-import { ElMundoScraper } from '../../../src/infrastructure/scraper/ElMundoScraper.ts'
-import { HTMLHandlerMock } from '../../__mocks__/HTMLHandlerMock.ts'
-import { HttpMock } from '../../__mocks__/HttpMock.ts'
+import { ElMundoScraper } from '../../../src/infrastructure/scraper/ElMundoScraper'
+import { HTMLHandlerMock } from '../../__mocks__/HTMLHandlerMock'
+import { HttpMock } from '../../__mocks__/HttpMock'
 
 describe('ElMundoScraper', () => {
   let scraper: ElMundoScraper

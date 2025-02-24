@@ -1,6 +1,6 @@
-import { Service } from '../../../../application/shared/Service.ts'
-import { InvalidArgumentError } from '../../../../domain/shared/error/InvalidArgumentError.ts'
-import { Controller } from '../Controller.ts'
+import { Service } from '../../../../application/shared/Service'
+import { InvalidArgumentError } from '../../../../domain/shared/error/InvalidArgumentError'
+import { Controller } from '../Controller'
 
 export class FeedDeleteController implements Controller {
   private service: Service<boolean>

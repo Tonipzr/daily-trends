@@ -1,6 +1,6 @@
-import { ElPaisScraper } from '../../../src/infrastructure/scraper/ElPaisScraper.ts'
-import { HTMLHandlerMock } from '../../__mocks__/HTMLHandlerMock.ts'
-import { HttpMock } from '../../__mocks__/HttpMock.ts'
+import { ElPaisScraper } from '../../../src/infrastructure/scraper/ElPaisScraper'
+import { HTMLHandlerMock } from '../../__mocks__/HTMLHandlerMock'
+import { HttpMock } from '../../__mocks__/HttpMock'
 
 describe('ElPaisScraper', () => {
   let scraper: ElPaisScraper

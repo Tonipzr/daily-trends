@@ -1,4 +1,4 @@
-import { Logger } from '../src/infrastructure/logger/Logger.ts'
+import { Logger } from '../src/infrastructure/logger/Logger'
 
 class TestLogger implements Logger {
   private mockDebug = jest.fn()

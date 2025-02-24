@@ -1,4 +1,4 @@
-import { Controller } from '../Controller.ts'
+import { Controller } from '../Controller'
 
 export class HealthCheckController implements Controller {
   async run (params: Record<string, string> | undefined, body: any): Promise<unknown> {

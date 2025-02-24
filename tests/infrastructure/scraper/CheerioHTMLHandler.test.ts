@@ -1,4 +1,4 @@
-import { CheerioHTMLHandler } from '../../../src/infrastructure/scraper/CheerioHTMLHandler.ts'
+import { CheerioHTMLHandler } from '../../../src/infrastructure/scraper/CheerioHTMLHandler'
 
 describe('CheerioHTMLHandler', () => {
   let handler: CheerioHTMLHandler

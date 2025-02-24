@@ -1,4 +1,4 @@
-import { Http } from '../../src/domain/Scraper/http.ts'
+import { Http } from '../../src/domain/Scraper/http'
 
 export class HttpMock extends Http {
   private mockGet = jest.fn()

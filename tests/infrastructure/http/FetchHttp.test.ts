@@ -1,4 +1,4 @@
-import { FetchHttp } from '../../../src/infrastructure/http/FetchHttp.ts'
+import { FetchHttp } from '../../../src/infrastructure/http/FetchHttp'
 import iconv from 'iconv-lite'
 
 global.fetch = jest.fn()

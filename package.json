@@ -2,12 +2,15 @@
   "name": "daily-trends",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage --collectCoverageFrom='src/**/*.{ts,tsx}'",
     "lint": "eslint .",
-    "dev": "tsx watch ./src/start.ts"
+    "dev": "tsx watch ./src/start.ts",
+    "build:clean": "rimraf dist/",
+    "build": "npm run build:clean && tsc && npm run build:copy-nontsfiles",
+    "build:copy-nontsfiles": "copyfiles src/**/*.json dist/",
+    "start": "node ./dist/src/start.js"
   },
   "keywords": [],
   "author": "Antonio Pozo Ruiz",
@@ -18,10 +21,12 @@
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.4",
     "@types/supertest": "^6.0.2",
+    "copyfiles": "^2.4.1",
     "eslint": "^9.20.1",
     "jest": "^29.7.0",
     "mongodb-memory-server": "^10.1.4",
     "neostandard": "^0.12.1",
+    "rimraf": "^6.0.1",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "tsx": "^4.19.3",
@@ -34,7 +39,7 @@
     "glob": "^11.0.1",
     "iconv-lite": "^0.6.3",
     "mongoose": "^8.10.1",
-    "node-dependency-injection": "^3.2.2",
+    "node-dependency-injection": "^2.6.11",
     "winston": "^3.17.0"
   }
 }

@@ -1,5 +1,5 @@
-import { FeedUpdateService } from '../../../../src/application/feed/update/FeedUpdateService.ts'
-import { RepositoryMock } from '../../../__mocks__/RepositoryMock.ts'
+import { FeedUpdateService } from '../../../../src/application/feed/update/FeedUpdateService'
+import { RepositoryMock } from '../../../__mocks__/RepositoryMock'
 
 describe('FeedUpdateService', () => {
   let service: FeedUpdateService

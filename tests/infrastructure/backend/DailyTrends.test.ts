@@ -1,5 +1,5 @@
-import { Server } from '../../../src/infrastructure/api/Server.ts'
-import { DailyTrendsApp } from '../../../src/infrastructure/backend/DailyTrends.ts'
+import { Server } from '../../../src/infrastructure/api/Server'
+import { DailyTrendsApp } from '../../../src/infrastructure/backend/DailyTrends'
 
 describe('DailyTrendsApp', () => {
   it('should instantiate with server param', () => {

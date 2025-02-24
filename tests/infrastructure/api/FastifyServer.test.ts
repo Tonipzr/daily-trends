@@ -1,8 +1,8 @@
 import supertest from 'supertest'
-import { FastifyServer } from '../../../src/infrastructure/api/FastifyServer.ts'
-import { HttpMethod, Route } from '../../../src/infrastructure/api/routes/Routes.ts'
-import { ResponseFactory } from '../../../src/infrastructure/api/response/ResponseFactory.ts'
-import { InvalidArgumentError } from '../../../src/domain/shared/error/InvalidArgumentError.ts'
+import { FastifyServer } from '../../../src/infrastructure/api/FastifyServer'
+import { HttpMethod, Route } from '../../../src/infrastructure/api/routes/Routes'
+import { ResponseFactory } from '../../../src/infrastructure/api/response/ResponseFactory'
+import { InvalidArgumentError } from '../../../src/domain/shared/error/InvalidArgumentError'
 
 describe('FastifyServer', () => {
   let server: FastifyServer

@@ -1,7 +1,7 @@
-import { Service } from '../../../../application/shared/Service.ts'
-import { Sources, sourcesValues } from '../../../../domain/Feed/Feed.ts'
-import { InvalidArgumentError } from '../../../../domain/shared/error/InvalidArgumentError.ts'
-import { Controller } from '../Controller.ts'
+import { Service } from '../../../../application/shared/Service'
+import { Sources, sourcesValues } from '../../../../domain/Feed/Feed'
+import { InvalidArgumentError } from '../../../../domain/shared/error/InvalidArgumentError'
+import { Controller } from '../Controller'
 
 export class FeedSaveController implements Controller {
   private service: Service<void>

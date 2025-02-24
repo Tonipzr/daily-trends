@@ -1,6 +1,6 @@
-import { ResponseNotOK } from './ResponseNotOK.ts'
-import { ResponseOK } from './ResponseOK.ts'
-import { Response } from './Response.ts'
+import { ResponseNotOK } from './ResponseNotOK'
+import { ResponseOK } from './ResponseOK'
+import { Response } from './Response'
 
 export class ResponseFactory {
   static createResponse (code: number, body: unknown): Response {

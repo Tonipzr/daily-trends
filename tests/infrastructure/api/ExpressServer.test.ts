@@ -1,9 +1,9 @@
 import supertest from 'supertest'
-import { ExpressServer } from '../../../src/infrastructure/api/ExpressServer.ts'
-import { HttpMethod, Route } from '../../../src/infrastructure/api/routes/Routes.ts'
+import { ExpressServer } from '../../../src/infrastructure/api/ExpressServer'
+import { HttpMethod, Route } from '../../../src/infrastructure/api/routes/Routes'
 import express from 'express'
-import { ResponseFactory } from '../../../src/infrastructure/api/response/ResponseFactory.ts'
-import { InvalidArgumentError } from '../../../src/domain/shared/error/InvalidArgumentError.ts'
+import { ResponseFactory } from '../../../src/infrastructure/api/response/ResponseFactory'
+import { InvalidArgumentError } from '../../../src/domain/shared/error/InvalidArgumentError'
 
 describe('ExpressServer', () => {
   let server: ExpressServer

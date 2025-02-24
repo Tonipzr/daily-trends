@@ -1,5 +1,5 @@
-import { Routes } from './Routes.ts'
-import container from '../../dependencyInjection/index.ts'
+import { Routes } from './Routes'
+import container from '../../dependencyInjection/index'
 
 const feedSearchController = container.get('Feed.FeedSearchController')
 const feedFindController = container.get('Feed.FeedFindController')

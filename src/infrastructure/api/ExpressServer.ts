@@ -1,8 +1,8 @@
 import express, { RequestHandler, Request, Response } from 'express'
-import { Server } from './Server.ts'
-import { Route } from './routes/Routes.ts'
-import { InvalidArgumentError } from '../../domain/shared/error/InvalidArgumentError.ts'
-import { ResponseFactory } from './response/ResponseFactory.ts'
+import { Server } from './Server'
+import { Route } from './routes/Routes'
+import { InvalidArgumentError } from '../../domain/shared/error/InvalidArgumentError'
+import { ResponseFactory } from './response/ResponseFactory'
 
 export class ExpressServer extends Server {
   private expressApp: express.Application = express()

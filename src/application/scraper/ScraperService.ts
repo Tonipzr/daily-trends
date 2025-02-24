@@ -1,6 +1,6 @@
-import { IFeed } from '../../domain/Feed/Feed.ts'
-import { Scraper } from '../../domain/Scraper/Scraper.ts'
-import { Service } from '../shared/Service.ts'
+import { IFeed } from '../../domain/Feed/Feed'
+import { Scraper } from '../../domain/Scraper/Scraper'
+import { Service } from '../shared/Service'
 
 export class ScraperService implements Service<IFeed[]> {
   private scrapers: Scraper[]

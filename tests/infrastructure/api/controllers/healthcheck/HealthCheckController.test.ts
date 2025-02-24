@@ -1,4 +1,4 @@
-import { HealthCheckController } from '../../../../../src/infrastructure/api/controllers/healthcheck/HealthCheckController.ts'
+import { HealthCheckController } from '../../../../../src/infrastructure/api/controllers/healthcheck/HealthCheckController'
 
 describe('HealthCheckController', () => {
   let controller: HealthCheckController

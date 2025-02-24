@@ -1,8 +1,8 @@
 import Fastify, { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
-import { Server } from './Server.ts'
-import { Route } from './routes/Routes.ts'
-import { InvalidArgumentError } from '../../domain/shared/error/InvalidArgumentError.ts'
-import { ResponseFactory } from './response/ResponseFactory.ts'
+import { Server } from './Server'
+import { Route } from './routes/Routes'
+import { InvalidArgumentError } from '../../domain/shared/error/InvalidArgumentError'
+import { ResponseFactory } from './response/ResponseFactory'
 
 export class FastifyServer extends Server {
   private fastifyApp: FastifyInstance = Fastify()

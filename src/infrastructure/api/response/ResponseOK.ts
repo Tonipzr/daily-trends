@@ -1,4 +1,4 @@
-import { Response } from './Response.ts'
+import { Response } from './Response'
 
 export class ResponseOK extends Response {
   constructor (code: number, message: unknown = 'OK') {

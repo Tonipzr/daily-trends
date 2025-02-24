@@ -13,7 +13,7 @@ describe('MongoClientFactory', () => {
   })
 
   it('should create a client', async () => {
-    const { MongoClientFactory } = await import('../../../../src/infrastructure/database/mongo/MongoClientFactory.ts')
+    const { MongoClientFactory } = await import('../../../../src/infrastructure/database/mongo/MongoClientFactory')
     const client = await MongoClientFactory.createClient('test')
     expect(client).toBeDefined()
 
@@ -21,7 +21,7 @@ describe('MongoClientFactory', () => {
   })
 
   it('should return the same client for the same context', async () => {
-    const { MongoClientFactory } = await import('../../../../src/infrastructure/database/mongo/MongoClientFactory.ts')
+    const { MongoClientFactory } = await import('../../../../src/infrastructure/database/mongo/MongoClientFactory')
     const client1 = await MongoClientFactory.createClient('test')
     const client2 = await MongoClientFactory.createClient('test')
     expect(client1).toBe(client2)
@@ -30,7 +30,7 @@ describe('MongoClientFactory', () => {
   })
 
   it('should return different clients for different contexts', async () => {
-    const { MongoClientFactory } = await import('../../../../src/infrastructure/database/mongo/MongoClientFactory.ts')
+    const { MongoClientFactory } = await import('../../../../src/infrastructure/database/mongo/MongoClientFactory')
     const client1 = await MongoClientFactory.createClient('test1')
     const client2 = await MongoClientFactory.createClient('test2')
     expect(client1).not.toBe(client2)

@@ -1,11 +1,11 @@
-jest.mock('../../../../src/infrastructure/dependencyInjection/index.ts', () => {
+jest.mock('../../../../src/infrastructure/dependencyInjection/index', () => {
   return {
     __esModule: true,
     default: { get: jest.fn() },
   }
 })
 // eslint-disable-next-line import-x/first
-import container from '../../../../src/infrastructure/dependencyInjection/index.ts'
+import container from '../../../../src/infrastructure/dependencyInjection/index'
 
 const mockFeedFindController = { run: jest.fn() }
 const mockFeedSearchController = { run: jest.fn() }
@@ -25,7 +25,7 @@ const mockFeedDeleteController = { run: jest.fn() };
 })
 
 // eslint-disable-next-line import-x/first
-import { routes } from '../../../../src/infrastructure/api/routes/feed.routes.ts'
+import { routes } from '../../../../src/infrastructure/api/routes/feed.routes'
 
 describe('FeedRoutesConfiguration', () => {
   it('should define the correct routes', () => {

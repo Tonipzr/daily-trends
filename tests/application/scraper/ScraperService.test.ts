@@ -1,7 +1,7 @@
-import { ScraperService } from '../../../src/application/scraper/ScraperService.ts'
-import { HTMLHandlerMock } from '../../__mocks__/HTMLHandlerMock.ts'
-import { HttpMock } from '../../__mocks__/HttpMock.ts'
-import { ScraperMock } from '../../__mocks__/ScraperMock.ts'
+import { ScraperService } from '../../../src/application/scraper/ScraperService'
+import { HTMLHandlerMock } from '../../__mocks__/HTMLHandlerMock'
+import { HttpMock } from '../../__mocks__/HttpMock'
+import { ScraperMock } from '../../__mocks__/ScraperMock'
 
 describe('ScraperService', () => {
   let service: ScraperService

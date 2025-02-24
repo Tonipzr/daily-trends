@@ -1,6 +1,6 @@
-import { InvalidArgumentError } from '../../../domain/shared/error/InvalidArgumentError.ts'
-import { Repository } from '../../../domain/shared/Repository.ts'
-import { Service } from '../../shared/Service.ts'
+import { InvalidArgumentError } from '../../../domain/shared/error/InvalidArgumentError'
+import { Repository } from '../../../domain/shared/Repository'
+import { Service } from '../../shared/Service'
 
 export class FeedDeleteService implements Service<boolean> {
   private repository: Repository

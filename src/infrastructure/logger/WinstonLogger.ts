@@ -1,5 +1,5 @@
 import winston, { Logger as WinstonLoggerType } from 'winston'
-import { Logger } from './Logger.ts'
+import { Logger } from './Logger'
 
 export class WinstonLogger implements Logger {
   private logger: WinstonLoggerType
