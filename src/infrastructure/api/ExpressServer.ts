@@ -10,10 +10,10 @@ export class ExpressServer extends Server {
       this.expressApp.use(express.json())
 
       this.httpServer = this.expressApp.listen(this.port, () => {
-        console.log(
+        logger.info(
             `API is running at http://localhost:${this.port}`
         )
-        console.log('  Press CTRL-C to stop\n')
+        logger.info('  Press CTRL-C to stop\n')
         resolve()
       })
     })

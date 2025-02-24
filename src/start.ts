@@ -4,6 +4,7 @@ import { Server } from './infrastructure/api/Server.ts'
 import { DailyTrendsApp } from './infrastructure/backend/DailyTrends.ts'
 import { Environment } from './infrastructure/config/Environment.ts'
 import container from './infrastructure/dependencyInjection/index.ts'
+import './infrastructure/logger/WinstonLogger.ts'
 
 if (process.argv && process.argv.length > 0) {
   const args = process.argv.slice(2)
@@ -25,7 +26,7 @@ if (process.argv && process.argv.length > 0) {
 }
 
 if (!container.has('Shared.Server')) {
-  console.warn('No server selected, defaulting to Express')
+  logger.warn('No server selected, defaulting to Express')
   container.register('Shared.Server', ExpressServer).addArgument(Environment.API_PORT)
 }
 
@@ -35,6 +36,6 @@ registerRoutes()
 
 new DailyTrendsApp(server).start().catch(
   (error) => {
-    console.error(error)
+    logger.error(error)
   }
 )
