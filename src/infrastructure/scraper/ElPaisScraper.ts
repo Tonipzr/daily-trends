@@ -55,7 +55,7 @@ export class ElPaisScraper extends Scraper {
         title: article.title,
         subTitle: article.subTitle,
         url: article.url,
-        author: article.author.split('|')[0] || 'unknown',
+        author: article.author.split('|')[0].trim() || 'unknown',
         source: 'ElPais',
         publishedAt: dateFromUrl && !isNaN(new Date(dateFromUrl).getTime()) ? new Date(dateFromUrl) : new Date()
       }

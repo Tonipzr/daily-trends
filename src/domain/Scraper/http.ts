@@ -1,3 +1,3 @@
 export abstract class Http {
-  abstract get (url: string): Promise<string>
+  abstract get (url: string, options?: { decode?: string }): Promise<string>
 }

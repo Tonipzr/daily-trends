@@ -19,6 +19,16 @@
         "tags": [
             { "name": "scraper" }
         ]
+      },
+      "Scraper.ElMundoscraper": {
+        "class": "../../../infrastructure/scraper/ElMundoScraper",
+        "arguments": [
+          "@Scraper.Http",
+          "@Scraper.HTMLHandler"
+        ],
+        "tags": [
+            { "name": "scraper" }
+        ]
       }
     }
   }
