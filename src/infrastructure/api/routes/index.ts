@@ -5,9 +5,11 @@ import container from '../../dependencyInjection/index.ts'
 import { Route } from './Routes.ts'
 import { Server } from '../Server.ts'
 
-export function registerRoutes () : void {
+export async function registerRoutes () : Promise<void> {
   const routes = glob.sync(path.join(path.dirname(fileURLToPath(import.meta.url)), '/**/*.routes.*'), { allowWindowsEscape: false })
-  routes.map((route) => register(route))
+  await Promise.all(
+    routes.map(async (route) => register(route))
+  )
 }
 
 async function register (routePath: string) : Promise<void> {

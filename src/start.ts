@@ -1,4 +1,5 @@
 import { ExpressServer } from './infrastructure/api/ExpressServer.ts'
+import { FastifyServer } from './infrastructure/api/FastifyServer.ts'
 import { registerRoutes } from './infrastructure/api/routes/index.ts'
 import { Server } from './infrastructure/api/Server.ts'
 import { DailyTrendsApp } from './infrastructure/backend/DailyTrends.ts'
@@ -12,11 +13,13 @@ if (process.argv && process.argv.length > 0) {
   if (args.length > 0) {
     switch (args[0]) {
       case 'express':
+        logger.info('Express server selected')
         container.register('Shared.Server', ExpressServer).addArgument(Environment.API_PORT)
         Environment.SERVER_TYPE = 'express'
         break
       case 'fastify':
-        container.register('Shared.Server', ExpressServer).addArgument(Environment.API_PORT)
+        logger.info('Fastify server selected')
+        container.register('Shared.Server', FastifyServer).addArgument(Environment.API_PORT)
         Environment.SERVER_TYPE = 'fastify'
         break
       default:
@@ -32,7 +35,7 @@ if (!container.has('Shared.Server')) {
 
 const server: Server = container.get('Shared.Server')
 
-registerRoutes()
+await registerRoutes()
 
 new DailyTrendsApp(server).start().catch(
   (error) => {

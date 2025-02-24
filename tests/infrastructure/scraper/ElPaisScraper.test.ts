@@ -14,7 +14,7 @@ describe('ElPaisScraper', () => {
     scraper = new ElPaisScraper(mockHttp, mockHtmlHandler)
   })
 
-  test('should fetch news correctly', async () => {
+  it('should fetch news correctly', async () => {
     const fakeHtml = ''
 
     mockHttp.whenGetThenReturn(fakeHtml)
