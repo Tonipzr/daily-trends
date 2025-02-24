@@ -1,11 +1,12 @@
 import { Service } from '../../../../application/shared/Service.ts'
+import { IFeed } from '../../../../domain/Feed/Feed.ts'
 import { Controller } from '../Controller.ts'
 
 export class FeedScrapeController implements Controller {
-  private service: Service<void>
+  private service: Service<IFeed[]>
   private feedSaveService: Service<void>
 
-  constructor (service: Service<void>, feedSaveService: Service<void>) {
+  constructor (service: Service<IFeed[]>, feedSaveService: Service<void>) {
     this.service = service
     this.feedSaveService = feedSaveService
   }
