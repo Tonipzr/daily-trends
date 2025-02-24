@@ -14,9 +14,10 @@ describe('FeedSaveService', () => {
   it('should call save when valid params', async () => {
     const params: Record<string, unknown> = {
       title: 'Title 1',
+      subTitle: 'Subtitle 1',
       url: 'URL 1',
       author: 'Description 1',
-      category: 'Content 1',
+      source: 'Custom',
       publishedAt: new Date().toISOString()
     }
 

@@ -61,8 +61,6 @@ export class ExpressServer extends Server {
     return async (req: Request, res: Response) => {
       const values = await fn(req.params, req.body)
 
-      console.log(values)
-
       res.json(values)
     }
   }
