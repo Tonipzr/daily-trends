@@ -35,11 +35,26 @@ if (!container.has('Shared.Server')) {
 
 const server: Server = container.get('Shared.Server')
 
-registerRoutes()
-  .then(() => {
-    new DailyTrendsApp(server).start().catch(
+// ExpressServer needs to start before registering routes
+if (server instanceof ExpressServer) {
+  new DailyTrendsApp(server).start()
+    .then(() => {
+      registerRoutes()
+    })
+    .catch(
       (error) => {
         logger.error(error)
       }
     )
-  })
+}
+
+if (server instanceof FastifyServer) {
+  registerRoutes()
+    .then(() => {
+      new DailyTrendsApp(server).start().catch(
+        (error) => {
+          logger.error(error)
+        }
+      )
+    })
+}

@@ -11,7 +11,7 @@ export class FeedUpdateController implements Controller {
   }
 
   async run (params: Record<string, string> | undefined, body: any): Promise<unknown> {
-    if (!params ||
+    if (!params || !body ||
             (!params.id || typeof params.id !== 'string') ||
             (!body.title || typeof body.title !== 'string') ||
             (!body.subTitle || typeof body.subTitle !== 'string') ||
