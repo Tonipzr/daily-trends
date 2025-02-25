@@ -3,6 +3,7 @@ import { Server } from './Server'
 import { Route } from './routes/Routes'
 import { InvalidArgumentError } from '../../domain/shared/error/InvalidArgumentError'
 import { ResponseFactory } from './response/ResponseFactory'
+import { ConflictError } from '../../domain/shared/error/ConflictError'
 
 export class ExpressServer extends Server {
   private expressApp: express.Application = express()
@@ -75,6 +76,14 @@ export class ExpressServer extends Server {
           logger.debug(`Error: ${err.message}`)
 
           res.status(400).json(ResponseFactory.createResponse(400, err.message).display())
+          return
+        }
+
+        if (error instanceof ConflictError || (error as Error).name === 'ConflictError') {
+          const err = error as ConflictError
+          logger.debug(`Error: ${err.message}`)
+
+          res.status(409).json(ResponseFactory.createResponse(409, err.message).display())
           return
         }
 
