@@ -1,6 +1,6 @@
 import mongoose, { Model } from 'mongoose'
-import { IFeed } from '../../../../../src/domain/Feed/Feed.ts'
-import { FeedMongoRepository } from '../../../../../src/infrastructure/database/mongo/Feed/FeedMongoRepository.ts'
+import { IFeed } from '../../../../../src/domain/Feed/Feed'
+import { FeedMongoRepository } from '../../../../../src/infrastructure/database/mongo/Feed/FeedMongoRepository'
 
 jest.mock('mongoose', () => {
   const mockModel = {

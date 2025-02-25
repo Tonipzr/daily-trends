@@ -1,5 +1,6 @@
-import { Service } from '../../../../application/shared/Service.ts'
-import { Controller } from '../Controller.ts'
+import { Service } from '../../../../application/shared/Service'
+import { InvalidArgumentError } from '../../../../domain/shared/error/InvalidArgumentError'
+import { Controller } from '../Controller'
 
 export class FeedDeleteController implements Controller {
   private service: Service<boolean>
@@ -10,15 +11,11 @@ export class FeedDeleteController implements Controller {
 
   async run (params: Record<string, string> | undefined, body: any): Promise<unknown> {
     if (!params || !params.id) {
-      return 'Invalid params'
+      throw new InvalidArgumentError('Invalid params')
     }
 
-    try {
-      const feed = await this.service.execute({ id: params.id })
+    const feed = await this.service.execute({ id: params.id })
 
-      return feed
-    } catch (error) {
-      return (error as Error).message
-    }
+    return feed
   }
 }

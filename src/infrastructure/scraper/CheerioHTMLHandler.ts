@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio'
-import { HTMLHandler } from '../../domain/Scraper/HTMLHandler.ts'
+import { HTMLHandler } from '../../domain/Scraper/HTMLHandler'
 
 export class CheerioHTMLHandler extends HTMLHandler {
   private html: any

@@ -1,4 +1,4 @@
-import { Controller } from '../controllers/Controller.ts'
+import { Controller } from '../controllers/Controller'
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
 

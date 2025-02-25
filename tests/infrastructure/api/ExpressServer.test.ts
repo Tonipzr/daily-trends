@@ -1,7 +1,9 @@
 import supertest from 'supertest'
-import { ExpressServer } from '../../../src/infrastructure/api/ExpressServer.ts'
-import { HttpMethod, Route } from '../../../src/infrastructure/api/routes/Routes.ts'
+import { ExpressServer } from '../../../src/infrastructure/api/ExpressServer'
+import { HttpMethod, Route } from '../../../src/infrastructure/api/routes/Routes'
 import express from 'express'
+import { ResponseFactory } from '../../../src/infrastructure/api/response/ResponseFactory'
+import { InvalidArgumentError } from '../../../src/domain/shared/error/InvalidArgumentError'
 
 describe('ExpressServer', () => {
   let server: ExpressServer
@@ -31,7 +33,23 @@ describe('ExpressServer', () => {
     const response = await supertest(server['expressApp']).get('/hello')
 
     expect(response.status).toBe(200)
-    expect(response.body).toEqual({ message: 'Hello World' })
+    expect(response.body).toEqual(ResponseFactory.createResponse(200, { message: 'Hello World' }).display())
+    expect(mockHandler).toHaveBeenCalledTimes(1)
+
+    await server.stop()
+  })
+
+  it('should register a GET route and return expected response not ok', async () => {
+    const mockHandler = jest.fn().mockRejectedValue(new InvalidArgumentError('Error'))
+
+    const route: Route = { method: 'GET', path: '/hello2', handler: mockHandler }
+    server.registerRoute(route)
+    await server.start()
+
+    const response = await supertest(server['expressApp']).get('/hello2')
+
+    expect(response.status).toBe(400)
+    expect(response.body).toEqual(ResponseFactory.createResponse(400, 'Error').display())
     expect(mockHandler).toHaveBeenCalledTimes(1)
 
     await server.stop()
@@ -47,7 +65,7 @@ describe('ExpressServer', () => {
     const response = await supertest(server['expressApp']).post('/hello')
 
     expect(response.status).toBe(200)
-    expect(response.body).toEqual({ message: 'Hello World' })
+    expect(response.body).toEqual(ResponseFactory.createResponse(200, { message: 'Hello World' }).display())
     expect(mockHandler).toHaveBeenCalledTimes(1)
 
     await server.stop()
@@ -63,7 +81,7 @@ describe('ExpressServer', () => {
     const response = await supertest(server['expressApp']).put('/hello')
 
     expect(response.status).toBe(200)
-    expect(response.body).toEqual({ message: 'Hello World' })
+    expect(response.body).toEqual(ResponseFactory.createResponse(200, { message: 'Hello World' }).display())
     expect(mockHandler).toHaveBeenCalledTimes(1)
 
     await server.stop()
@@ -79,7 +97,7 @@ describe('ExpressServer', () => {
     const response = await supertest(server['expressApp']).delete('/hello')
 
     expect(response.status).toBe(200)
-    expect(response.body).toEqual({ message: 'Hello World' })
+    expect(response.body).toEqual(ResponseFactory.createResponse(200, { message: 'Hello World' }).display())
     expect(mockHandler).toHaveBeenCalledTimes(1)
 
     await server.stop()

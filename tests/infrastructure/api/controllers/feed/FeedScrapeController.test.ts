@@ -1,6 +1,6 @@
-import { Service } from '../../../../../src/application/shared/Service.ts'
-import { IFeed, Sources } from '../../../../../src/domain/Feed/Feed.ts'
-import { FeedScrapeController } from '../../../../../src/infrastructure/api/controllers/feed/FeedScrapeController.ts'
+import { Service } from '../../../../../src/application/shared/Service'
+import { IFeed, Sources } from '../../../../../src/domain/Feed/Feed'
+import { FeedScrapeController } from '../../../../../src/infrastructure/api/controllers/feed/FeedScrapeController'
 
 describe('FeedScrapeController', () => {
   let mockService: jest.Mocked<Service<IFeed[]>>
@@ -89,9 +89,7 @@ describe('FeedScrapeController', () => {
     const mockError = new Error('error message')
     mockService.execute.mockRejectedValue(mockError)
 
-    const result = await controller.run(undefined, { save: true })
-
-    expect(result).toBe(mockError.message)
+    expect(controller.run(undefined, { save: true })).rejects.toThrow(mockError.message)
     expect(mockService.execute).toHaveBeenCalled()
     expect(mockFeedSaveService.execute).not.toHaveBeenCalled()
   })

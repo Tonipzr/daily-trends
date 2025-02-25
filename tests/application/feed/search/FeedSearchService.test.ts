@@ -1,6 +1,6 @@
-import { FeedSearchService } from '../../../../src/application/feed/search/FeedSearchService.ts'
-import { IFeed } from '../../../../src/domain/Feed/Feed.ts'
-import { RepositoryMock } from '../../../__mocks__/RepositoryMock.ts'
+import { FeedSearchService } from '../../../../src/application/feed/search/FeedSearchService'
+import { IFeed } from '../../../../src/domain/Feed/Feed'
+import { RepositoryMock } from '../../../__mocks__/RepositoryMock'
 
 describe('FeedSearchService', () => {
   let service: FeedSearchService

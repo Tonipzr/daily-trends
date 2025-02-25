@@ -1,4 +1,4 @@
-import { HTMLHandler } from '../../src/domain/Scraper/HTMLHandler.ts'
+import { HTMLHandler } from '../../src/domain/Scraper/HTMLHandler'
 
 export class HTMLHandlerMock extends HTMLHandler {
   private mockLoad = jest.fn()

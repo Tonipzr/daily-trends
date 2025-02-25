@@ -1,5 +1,5 @@
-import { IFeed } from '../../src/domain/Feed/Feed.ts'
-import { Scraper } from '../../src/domain/Scraper/Scraper.ts'
+import { IFeed } from '../../src/domain/Feed/Feed'
+import { Scraper } from '../../src/domain/Scraper/Scraper'
 
 export class ScraperMock extends Scraper {
   private mockGetNews = jest.fn()

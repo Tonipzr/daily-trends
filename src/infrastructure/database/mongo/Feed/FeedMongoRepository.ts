@@ -1,7 +1,8 @@
 import mongoose, { Schema } from 'mongoose'
-import { Repository } from '../../../../domain/shared/Repository.ts'
-import { MongoRepository } from '../MongoRepository.ts'
-import { IFeed, sourcesValues } from '../../../../domain/Feed/Feed.ts'
+import { Repository } from '../../../../domain/shared/Repository'
+import { MongoRepository } from '../MongoRepository'
+import { IFeed, sourcesValues } from '../../../../domain/Feed/Feed'
+import { ConflictError } from '../../../../domain/shared/error/ConflictError'
 
 export class FeedMongoRepository extends MongoRepository implements Repository {
   constructor (client: Promise<mongoose.Connection>) {
@@ -30,7 +31,15 @@ export class FeedMongoRepository extends MongoRepository implements Repository {
   async save (feed: IFeed): Promise<void> {
     const feedDocument = new (this.model as mongoose.Model<IFeed>)(feed)
 
-    await feedDocument.save()
+    try {
+      await feedDocument.save()
+    } catch (error) {
+      if ((error as Record<string, number>)?.code === 11000) {
+        throw new ConflictError('Feed already exists')
+      }
+
+      throw error
+    }
   }
 
   async search (id: string): Promise<unknown> {
@@ -48,6 +57,14 @@ export class FeedMongoRepository extends MongoRepository implements Repository {
   }
 
   async update (id: string, feed: IFeed): Promise<void> {
-    await (this.model as mongoose.Model<IFeed>).updateOne({ _id: id }, feed)
+    try {
+      await (this.model as mongoose.Model<IFeed>).updateOne({ _id: id }, feed)
+    } catch (error) {
+      if ((error as Record<string, number>)?.code === 11000) {
+        throw new ConflictError('Feed already exists')
+      }
+
+      throw error
+    }
   }
 }

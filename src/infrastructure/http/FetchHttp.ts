@@ -1,4 +1,4 @@
-import { Http } from '../../domain/Scraper/http.ts'
+import { Http } from '../../domain/Scraper/http'
 import iconv from 'iconv-lite'
 
 export class FetchHttp extends Http {

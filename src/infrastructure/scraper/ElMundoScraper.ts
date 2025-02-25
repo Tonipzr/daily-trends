@@ -1,7 +1,7 @@
-import { IFeed } from '../../domain/Feed/Feed.ts'
-import { HTMLHandler } from '../../domain/Scraper/HTMLHandler.ts'
-import { Http } from '../../domain/Scraper/http.ts'
-import { Scraper } from '../../domain/Scraper/Scraper.ts'
+import { IFeed } from '../../domain/Feed/Feed'
+import { HTMLHandler } from '../../domain/Scraper/HTMLHandler'
+import { Http } from '../../domain/Scraper/http'
+import { Scraper } from '../../domain/Scraper/Scraper'
 
 export class ElMundoScraper extends Scraper {
   private selectors = {

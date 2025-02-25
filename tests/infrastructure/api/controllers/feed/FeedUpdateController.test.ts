@@ -1,5 +1,5 @@
-import { Service } from '../../../../../src/application/shared/Service.ts'
-import { FeedUpdateController } from '../../../../../src/infrastructure/api/controllers/feed/FeedUpdateController.ts'
+import { Service } from '../../../../../src/application/shared/Service'
+import { FeedUpdateController } from '../../../../../src/infrastructure/api/controllers/feed/FeedUpdateController'
 
 describe('FeedSaveController', () => {
   let controller: FeedUpdateController
@@ -18,9 +18,10 @@ describe('FeedSaveController', () => {
 
     const feedBody = {
       title: 'string',
+      subTitle: 'string',
       url: 'string',
       author: 'string',
-      category: 'string',
+      source: 'Custom',
       publishedAt: new Date().toISOString()
     }
 

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-import MongoConfig from './MongoConfig.ts'
-import { Environment } from '../../config/Environment.ts'
+import MongoConfig from './MongoConfig'
+import { Environment } from '../../config/Environment'
 
 export class MongoClientFactory {
   private static clients: { [key: string]: mongoose.Connection } = {}

@@ -1,6 +1,6 @@
-import { IFeed } from '../Feed/Feed.ts'
-import { HTMLHandler } from './HTMLHandler.ts'
-import { Http } from './http.ts'
+import { IFeed } from '../Feed/Feed'
+import { HTMLHandler } from './HTMLHandler'
+import { Http } from './http'
 
 export abstract class Scraper {
   private _http: Http

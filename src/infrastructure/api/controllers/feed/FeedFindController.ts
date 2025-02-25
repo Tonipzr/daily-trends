@@ -1,6 +1,6 @@
-import { Service } from '../../../../application/shared/Service.ts'
-import { IFeed } from '../../../../domain/Feed/Feed.ts'
-import { Controller } from '../Controller.ts'
+import { Service } from '../../../../application/shared/Service'
+import { IFeed } from '../../../../domain/Feed/Feed'
+import { Controller } from '../Controller'
 
 export class FeedFindController implements Controller {
   private service: Service<IFeed[]>
@@ -10,12 +10,8 @@ export class FeedFindController implements Controller {
   }
 
   async run (params: Record<string, string> | undefined, body: any): Promise<unknown> {
-    try {
-      const feeds = await this.service.execute()
+    const feeds = await this.service.execute()
 
-      return feeds
-    } catch (error) {
-      return (error as Error).message
-    }
+    return feeds
   }
 }

@@ -1,11 +1,11 @@
-jest.mock('../../../../src/infrastructure/dependencyInjection/index.ts', () => {
+jest.mock('../../../../src/infrastructure/dependencyInjection/index', () => {
   return {
     __esModule: true,
     default: { get: jest.fn() },
   }
 })
 // eslint-disable-next-line import-x/first
-import container from '../../../../src/infrastructure/dependencyInjection/index.ts'
+import container from '../../../../src/infrastructure/dependencyInjection/index'
 
 const mockhealthCheckController = { run: jest.fn() };
 
@@ -17,7 +17,7 @@ const mockhealthCheckController = { run: jest.fn() };
 })
 
 // eslint-disable-next-line import-x/first
-import { routes } from '../../../../src/infrastructure/api/routes/healthcheck.routes.ts'
+import { routes } from '../../../../src/infrastructure/api/routes/healthcheck.routes'
 
 describe('HealthCheckRoutesConfiguration', () => {
   it('should define the correct routes', () => {

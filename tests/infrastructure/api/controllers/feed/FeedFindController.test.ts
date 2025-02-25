@@ -1,6 +1,6 @@
-import { Service } from '../../../../../src/application/shared/Service.ts'
-import { IFeed } from '../../../../../src/domain/Feed/Feed.ts'
-import { FeedFindController } from '../../../../../src/infrastructure/api/controllers/feed/FeedFindController.ts'
+import { Service } from '../../../../../src/application/shared/Service'
+import { IFeed } from '../../../../../src/domain/Feed/Feed'
+import { FeedFindController } from '../../../../../src/infrastructure/api/controllers/feed/FeedFindController'
 
 describe('FeedFindController', () => {
   let controller: FeedFindController
@@ -37,9 +37,8 @@ describe('FeedFindController', () => {
     const errorMessage = 'Error message'
 
     mockService.execute.mockRejectedValue(new Error(errorMessage))
-    const result = await controller.run(undefined, {})
 
-    expect(result).toEqual(errorMessage)
+    expect(controller.run(undefined, {})).rejects.toThrow(errorMessage)
     expect(mockService.execute).toHaveBeenCalledTimes(1)
   })
 })

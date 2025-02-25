@@ -1,6 +1,6 @@
-import { HTMLHandlerMock } from '../../__mocks__/HTMLHandlerMock.ts'
-import { HttpMock } from '../../__mocks__/HttpMock.ts'
-import { ScraperMock } from '../../__mocks__/ScraperMock.ts'
+import { HTMLHandlerMock } from '../../__mocks__/HTMLHandlerMock'
+import { HttpMock } from '../../__mocks__/HttpMock'
+import { ScraperMock } from '../../__mocks__/ScraperMock'
 
 describe('Scraper', () => {
   let scraper: ScraperMock

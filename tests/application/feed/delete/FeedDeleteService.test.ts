@@ -1,5 +1,5 @@
-import { FeedDeleteService } from '../../../../src/application/feed/delete/FeedDeleteService.ts'
-import { RepositoryMock } from '../../../__mocks__/RepositoryMock.ts'
+import { FeedDeleteService } from '../../../../src/application/feed/delete/FeedDeleteService'
+import { RepositoryMock } from '../../../__mocks__/RepositoryMock'
 
 describe('FeedDeleteService', () => {
   let service: FeedDeleteService
