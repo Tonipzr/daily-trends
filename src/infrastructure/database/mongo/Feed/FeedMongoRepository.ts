@@ -58,7 +58,7 @@ export class FeedMongoRepository extends MongoRepository implements Repository {
 
   async update (id: string, feed: IFeed): Promise<void> {
     try {
-      await (this.model as mongoose.Model<IFeed>).updateOne({ _id: id }, feed)
+      await (this.model as mongoose.Model<IFeed>).updateOne({ _id: id }, feed, { upsert: true })
     } catch (error) {
       if ((error as Record<string, number>)?.code === 11000) {
         throw new ConflictError('Feed already exists')

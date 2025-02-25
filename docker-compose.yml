@@ -11,3 +11,14 @@ services:
       - "27017:27017"
     volumes:
       - mongo:/data
+
+  app:
+    container_name: daily-trends
+    build: .
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017
+    ports:
+      - "4000:4000"
+      
