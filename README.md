@@ -6,6 +6,7 @@
 * [Instructions](#Instructions)
 * [Tests](#Tests)
 * [Architecture](#Architecture)
+* [API Docs](#API)
 
 ## Installation
 
@@ -17,12 +18,12 @@ Run the following command:
 
 Windows:
 ```sh
-docker compose up
+docker compose up mongo -d
 ```
 
 Linux:
 ```sh
-docker-compose up
+docker-compose up mongo -d
 ```
 
 ## Instructions
@@ -69,6 +70,26 @@ npm run dev -- fastify
 
 The options available are [express](https://www.npmjs.com/package/express) and [fastify](https://www.npmjs.com/package/fastify)
 
+### Production in Container
+
+To run an instance of the service within docker, you can use the project's docker-compose
+
+Run the following command:
+
+Windows:
+```sh
+docker compose up app -d
+```
+
+Linux:
+```sh
+docker-compose up app -d
+```
+
+If no mongo instance was running, the corresponding database container will also be created.
+
+The Dockerfile is optimised to use the cache in container builds.
+
 ## Tests
 
 The following commands are used to run the tests
@@ -110,3 +131,232 @@ And the available servers (express and fastify) as follows
 Finally, a sequence diagram of an API request
 
 ![API Request Sequence](docs/images/request.png)
+
+## API
+
+### Get all feeds (GET /feed)
+
+Request to get all feeds
+
+- **Path**: GET /feed
+- **Params**: None
+- **Body**: None
+
+**Response**
+```json
+{
+    "status": "success",
+    "data": {
+        "items": [
+            {
+                "_id": "string",
+                "title": "string",
+                "subTitle": "string",
+                "url": "string",
+                "author": "string",
+                "source": "string",
+                "publishedAt": "string",
+                "createdAt": "string",
+                "updatedAt": "string",
+                "__v": "number"
+            },
+        ]
+    }
+}
+```
+
+### Get one feed (GET /feed/:id)
+
+Request to get a feed by its id
+
+- **Path**: GET /feed/:id
+- **Params**: 
+    - id: feed id
+- **Body**: None
+
+**Response**
+```json
+{
+    "status": "success",
+        "data": {
+            "items": {
+                "_id": "string",
+                "title": "string",
+                "subTitle": "string",
+                "url": "string",
+                "author": "string",
+                "source": "string",
+                "publishedAt": "string",
+                "createdAt": "string",
+                "updatedAt": "string",
+                "__v": "number"
+            },
+        }
+}
+```
+
+### Create feed (POST /feed)
+
+Request to create a feed
+
+- **Path**: POST /feed
+- **Params**: None
+- **Body**: *as json* - **all fields required**
+```json
+{
+  "title": "Title", // any string
+  "subTitle": "Description", // any string
+  "url": "http://example.com", // any string (must be unique)
+  "author": "Toni", // any string
+  "source": "Custom", // Must be one of: Custom | ElPais | ElMundo
+  "publishedAt": "2025-02-23T12:33:47.965Z" // Date in string format. Must be new Date() parsable
+}
+```
+
+**Response OK**
+```json
+{
+    "status": "success",
+    "data": {
+        "items": true // boolean
+    }
+}
+```
+
+**Response Not OK**
+```json
+{
+    "status": "error",
+    "errors": "error description" // string
+}
+```
+
+### Update Feed (PUT /feed/:id)
+
+Request to update a feed. If the document does not exist, it will create a new one.
+
+- **Path**: PUT /feed/:id
+- **Params**: 
+    - id: feed id
+- **Body**: *as json* - **all fields required**
+```json
+{
+  "title": "Title", // any string
+  "subTitle": "Description", // any string
+  "url": "http://example.com", // any string (must be unique)
+  "author": "Toni", // any string
+  "source": "Custom", // Must be one of: Custom | ElPais | ElMundo
+  "publishedAt": "2025-02-23T12:33:47.965Z" // Date in string format. Must be new Date() parsable
+}
+```
+
+**Response OK**
+```json
+{
+    "status": "success",
+    "data": {
+        "items": true // boolean
+    }
+}
+```
+
+**Response Not OK**
+```json
+{
+    "status": "error",
+    "errors": "error description" // string
+}
+```
+
+### Delete feed (DELETE /feed/:id)
+
+Request to delete a feed
+
+- **Path**: DELETE /feed/:id
+- **Params**: 
+    - id: feed id
+- **Body**: None
+
+**Response OK**
+```json
+{
+    "status": "success",
+    "data": {
+        "items": true // boolean
+    }
+}
+```
+
+### Scraping (POST /feed/scrape)
+
+Request to retrieve feeds from [El Mundo](https://www.elmundo.es/) y [El País](https://elpais.com/)
+
+- **Path**: POST /feed/:id
+- **Params**: 
+    - id: feed id
+- **Body**: *as json* - **all fields are optional**
+
+When the `save` field is not present or false, it simply returns the news, if true it saves them to the database if it has not already done
+**It does not duplicate feeds, if they have the same URL, it does not re-add them**
+
+*Limited to 5 feeds*
+```sh
+{
+  "save": boolean // true | false
+}
+```
+
+**Response**
+```json
+{
+    "status": "success",
+    "data": {
+        "items": [
+            {
+                "_id": "string",
+                "title": "string",
+                "subTitle": "string",
+                "url": "string",
+                "author": "string",
+                "source": "string",
+                "publishedAt": "string",
+                "createdAt": "string",
+                "updatedAt": "string",
+                "__v": "number"
+            },
+        ]
+    }
+}
+```
+
+### Healthcheck (GET /)
+
+Request to get server status
+
+- **Path**: GET /
+- **Params**: Ninguno
+- **Body**: Ninguno
+
+**Response**
+```json
+{
+    "status": "success",
+        "data": {
+            "items": {
+                "status": "ok", // string
+                "uptime": 7218.886387329, // number
+                "memoryUsage": {
+                    "rss": 117751808, // number
+                    "heapTotal": 45092864, // number
+                    "heapUsed": 42675704, // number
+                    "external": 22049381, // number
+                    "arrayBuffers": 18535668 // number
+                },
+                "pid": 1, // number
+                "nodeVersion": "v22.14.0", // string
+                "platform": "linux", // string
+                "arch": "x64" // string
+            }
+        }
+}
+```

@@ -111,6 +111,6 @@ describe('FeedMongoRepository', () => {
 
     await feedRepo.update('123', feedData)
 
-    expect(mockUpdateOne).toHaveBeenCalledWith({ _id: '123' }, feedData)
+    expect(mockUpdateOne).toHaveBeenCalledWith({ _id: '123' }, feedData, {upsert: true})
   })
 })
