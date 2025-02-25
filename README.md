@@ -38,7 +38,7 @@ The server can be started in development mode with the following command
 npm run dev
 ```
 
-By default, the server will start in [express](https://www.npmjs.com/package/express), mode, this behaviour can be changed by using command arguments
+By default, the server will start in [express](https://www.npmjs.com/package/express) mode, this behaviour can be changed by using command arguments
 
 ```sh
 npm run dev -- express
@@ -61,11 +61,11 @@ And then run the server
 npm run start
 ```
 
-By default, the server will start in [express](https://www.npmjs.com/package/express), mode, this behaviour can be changed by using command arguments
+By default, the server will start in [express](https://www.npmjs.com/package/express) mode, this behaviour can be changed by using command arguments
 
 ```sh
-npm run dev -- express
-npm run dev -- fastify
+npm run start -- express
+npm run start -- fastify
 ```
 
 The options available are [express](https://www.npmjs.com/package/express) and [fastify](https://www.npmjs.com/package/fastify)
@@ -104,7 +104,7 @@ And to run them and obtain coverage
 npm run test:coverage
 ```
 
-Current unit test coverage is:
+Current test coverage is:
 
 ![Unit Test Coverage](docs/images/unit_test_coverage.png)
 
@@ -291,12 +291,13 @@ Request to delete a feed
 
 Request to retrieve feeds from [El Mundo](https://www.elmundo.es/) y [El País](https://elpais.com/)
 
-- **Path**: POST /feed/:id
+- **Path**: POST /feed/scrape
 - **Params**: 
     - id: feed id
 - **Body**: *as json* - **all fields are optional**
 
-When the `save` field is not present or false, it simply returns the news, if true it saves them to the database if it has not already done
+When the `save` field is not present or false, it simply returns the news, if true it saves them to the database if it has not already done.
+
 **It does not duplicate feeds, if they have the same URL, it does not re-add them**
 
 *Limited to 5 feeds*
@@ -334,8 +335,8 @@ When the `save` field is not present or false, it simply returns the news, if tr
 Request to get server status
 
 - **Path**: GET /
-- **Params**: Ninguno
-- **Body**: Ninguno
+- **Params**: None
+- **Body**: None
 
 **Response**
 ```json
