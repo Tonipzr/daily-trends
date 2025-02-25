@@ -1,5 +1,5 @@
-import { Service } from '../../../../../src/application/shared/Service.ts'
-import { FeedSaveController } from '../../../../../src/infrastructure/api/controllers/feed/FeedSaveController.ts'
+import { Service } from '../../../../../src/application/shared/Service'
+import { FeedSaveController } from '../../../../../src/infrastructure/api/controllers/feed/FeedSaveController'
 
 describe('FeedSaveController', () => {
   let controller: FeedSaveController
@@ -16,9 +16,10 @@ describe('FeedSaveController', () => {
   it('should send the params to the service', async () => {
     const feedBody = {
       title: 'string',
+      subTitle: 'string',
       url: 'string',
       author: 'string',
-      category: 'string',
+      source: 'Custom',
       publishedAt: new Date().toISOString()
     }
 

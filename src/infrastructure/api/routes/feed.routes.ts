@@ -1,11 +1,12 @@
-import { Routes } from './Routes.ts'
-import container from '../../dependencyInjection/index.ts'
+import { Routes } from './Routes'
+import container from '../../dependencyInjection/index'
 
 const feedSearchController = container.get('Feed.FeedSearchController')
 const feedFindController = container.get('Feed.FeedFindController')
 const feedSaveController = container.get('Feed.FeedSaveController')
 const feedDeleteController = container.get('Feed.FeedDeleteController')
 const feedUpdateController = container.get('Feed.FeedUpdateController')
+const feedScrapeController = container.get('Feed.FeedScrapeController')
 
 export const routes: Routes = [
   {
@@ -32,5 +33,10 @@ export const routes: Routes = [
     path: '/feed/:id',
     method: 'DELETE',
     handler: feedDeleteController.run.bind(feedDeleteController)
+  },
+  {
+    path: '/feed/scrape',
+    method: 'POST',
+    handler: feedScrapeController.run.bind(feedScrapeController)
   }
 ]

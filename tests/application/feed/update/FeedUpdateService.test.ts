@@ -1,5 +1,5 @@
-import { FeedUpdateService } from '../../../../src/application/feed/update/FeedUpdateService.ts'
-import { RepositoryMock } from '../../../__mocks__/RepositoryMock.ts'
+import { FeedUpdateService } from '../../../../src/application/feed/update/FeedUpdateService'
+import { RepositoryMock } from '../../../__mocks__/RepositoryMock'
 
 describe('FeedUpdateService', () => {
   let service: FeedUpdateService
@@ -15,9 +15,10 @@ describe('FeedUpdateService', () => {
     const params: Record<string, unknown> = {
       id: '1',
       title: 'Title 1',
+      subTitle: 'SubTitle 1',
       url: 'URL 1',
       author: 'Description 1',
-      category: 'Content 1',
+      source: 'Custom',
       publishedAt: new Date().toISOString()
     }
 
@@ -25,9 +26,10 @@ describe('FeedUpdateService', () => {
 
     mockRepository.assertUpdateCalledWith(params.id as string, {
       title: params.title,
+      subTitle: params.subTitle,
       url: params.url,
       author: params.author,
-      category: params.category,
+      source: params.source,
       publishedAt: new Date(params.publishedAt as string)
     })
   })

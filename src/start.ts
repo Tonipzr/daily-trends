@@ -1,9 +1,11 @@
-import { ExpressServer } from './infrastructure/api/ExpressServer.ts'
-import { registerRoutes } from './infrastructure/api/routes/index.ts'
-import { Server } from './infrastructure/api/Server.ts'
-import { DailyTrendsApp } from './infrastructure/backend/DailyTrends.ts'
-import { Environment } from './infrastructure/config/Environment.ts'
-import container from './infrastructure/dependencyInjection/index.ts'
+import { ExpressServer } from './infrastructure/api/ExpressServer'
+import { FastifyServer } from './infrastructure/api/FastifyServer'
+import { registerRoutes } from './infrastructure/api/routes/index'
+import { Server } from './infrastructure/api/Server'
+import { DailyTrendsApp } from './infrastructure/backend/DailyTrends'
+import { Environment } from './infrastructure/config/Environment'
+import container from './infrastructure/dependencyInjection/index'
+import './infrastructure/logger/WinstonLogger'
 
 if (process.argv && process.argv.length > 0) {
   const args = process.argv.slice(2)
@@ -11,11 +13,13 @@ if (process.argv && process.argv.length > 0) {
   if (args.length > 0) {
     switch (args[0]) {
       case 'express':
+        logger.info('Express server selected')
         container.register('Shared.Server', ExpressServer).addArgument(Environment.API_PORT)
         Environment.SERVER_TYPE = 'express'
         break
       case 'fastify':
-        container.register('Shared.Server', ExpressServer).addArgument(Environment.API_PORT)
+        logger.info('Fastify server selected')
+        container.register('Shared.Server', FastifyServer).addArgument(Environment.API_PORT)
         Environment.SERVER_TYPE = 'fastify'
         break
       default:
@@ -25,16 +29,32 @@ if (process.argv && process.argv.length > 0) {
 }
 
 if (!container.has('Shared.Server')) {
-  console.warn('No server selected, defaulting to Express')
+  logger.warn('No server selected, defaulting to Express')
   container.register('Shared.Server', ExpressServer).addArgument(Environment.API_PORT)
 }
 
 const server: Server = container.get('Shared.Server')
 
-registerRoutes()
+// ExpressServer needs to start before registering routes
+if (server instanceof ExpressServer) {
+  new DailyTrendsApp(server).start()
+    .then(() => {
+      registerRoutes()
+    })
+    .catch(
+      (error) => {
+        logger.error(error)
+      }
+    )
+}
 
-new DailyTrendsApp(server).start().catch(
-  (error) => {
-    console.error(error)
-  }
-)
+if (server instanceof FastifyServer) {
+  registerRoutes()
+    .then(() => {
+      new DailyTrendsApp(server).start().catch(
+        (error) => {
+          logger.error(error)
+        }
+      )
+    })
+}

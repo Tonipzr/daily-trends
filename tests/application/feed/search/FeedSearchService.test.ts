@@ -1,6 +1,6 @@
-import { FeedSearchService } from '../../../../src/application/feed/search/FeedSearchService.ts'
-import { IFeed } from '../../../../src/domain/Feed/Feed.ts'
-import { RepositoryMock } from '../../../__mocks__/RepositoryMock.ts'
+import { FeedSearchService } from '../../../../src/application/feed/search/FeedSearchService'
+import { IFeed } from '../../../../src/domain/Feed/Feed'
+import { RepositoryMock } from '../../../__mocks__/RepositoryMock'
 
 describe('FeedSearchService', () => {
   let service: FeedSearchService
@@ -15,9 +15,10 @@ describe('FeedSearchService', () => {
   it('should return the feed', async () => {
     const fakeFeed: IFeed = {
       title: 'Title 1',
+      subTitle: 'SubTitle 1',
       url: 'URL 1',
       author: 'Description 1',
-      category: 'Content 1',
+      source: 'Custom',
       publishedAt: new Date()
     }
 

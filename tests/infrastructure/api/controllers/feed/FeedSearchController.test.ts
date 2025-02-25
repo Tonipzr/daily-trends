@@ -1,6 +1,7 @@
-import { Service } from '../../../../../src/application/shared/Service.ts'
-import { IFeed } from '../../../../../src/domain/Feed/Feed.ts'
-import { FeedSearchController } from '../../../../../src/infrastructure/api/controllers/feed/FeedSearchController.ts'
+import { Service } from '../../../../../src/application/shared/Service'
+import { IFeed } from '../../../../../src/domain/Feed/Feed'
+import { InvalidArgumentError } from '../../../../../src/domain/shared/error/InvalidArgumentError'
+import { FeedSearchController } from '../../../../../src/infrastructure/api/controllers/feed/FeedSearchController'
 
 describe('FeedSearchController', () => {
   let controller: FeedSearchController
@@ -17,9 +18,10 @@ describe('FeedSearchController', () => {
   it('should return the feed when valid params', async () => {
     const fakeFeed: IFeed = {
       title: 'Title 1',
+      subTitle: 'SubTitle 1',
       url: 'URL 1',
       author: 'Description 1',
-      category: 'Content 1',
+      source: 'Custom',
       publishedAt: new Date()
     }
 
@@ -31,19 +33,16 @@ describe('FeedSearchController', () => {
   })
 
   it('should return error message when invalid params', async () => {
-    const result = await controller.run({}, {})
-
-    expect(result).toEqual('Invalid params')
+    expect(controller.run({}, {})).rejects.toThrow('Invalid params')
     expect(mockService.execute).not.toHaveBeenCalled()
   })
 
   it('should return error message', async () => {
     const errorMessage = 'Error message'
 
-    mockService.execute.mockRejectedValue(new Error(errorMessage))
-    const result = await controller.run({ id: '1' }, {})
+    mockService.execute.mockRejectedValue(new InvalidArgumentError(errorMessage))
 
-    expect(result).toEqual(errorMessage)
+    expect(controller.run({ id: '1' }, {})).rejects.toThrow(errorMessage)
     expect(mockService.execute).toHaveBeenCalledTimes(1)
   })
 })

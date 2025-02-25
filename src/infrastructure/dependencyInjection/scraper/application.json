@@ -1,0 +1,34 @@
+{
+    "services": {
+      "Scraper.Http": {
+        "class": "../../../infrastructure/http/FetchHttp"
+      },
+      "Scraper.HTMLHandler": {
+        "class": "../../../infrastructure/scraper/CheerioHTMLHandler"
+      },
+      "Scraper.ScraperService": {
+        "class": "../../../application/scraper/ScraperService",
+        "arguments": ["!tagged scraper"]
+      },
+      "Scraper.ElPaisScraper": {
+        "class": "../../../infrastructure/scraper/ElPaisScraper",
+        "arguments": [
+          "@Scraper.Http",
+          "@Scraper.HTMLHandler"
+        ],
+        "tags": [
+            { "name": "scraper" }
+        ]
+      },
+      "Scraper.ElMundoscraper": {
+        "class": "../../../infrastructure/scraper/ElMundoScraper",
+        "arguments": [
+          "@Scraper.Http",
+          "@Scraper.HTMLHandler"
+        ],
+        "tags": [
+            { "name": "scraper" }
+        ]
+      }
+    }
+  }

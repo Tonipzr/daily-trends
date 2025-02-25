@@ -1,6 +1,7 @@
-import { Service } from '../../../../application/shared/Service.ts'
-import { IFeed } from '../../../../domain/Feed/Feed.ts'
-import { Controller } from '../Controller.ts'
+import { Service } from '../../../../application/shared/Service'
+import { IFeed } from '../../../../domain/Feed/Feed'
+import { InvalidArgumentError } from '../../../../domain/shared/error/InvalidArgumentError'
+import { Controller } from '../Controller'
 
 export class FeedSearchController implements Controller {
   private service: Service<IFeed>
@@ -11,15 +12,11 @@ export class FeedSearchController implements Controller {
 
   async run (params: Record<string, string> | undefined, body: any): Promise<unknown> {
     if (!params || !params.id) {
-      return 'Invalid params'
+      throw new InvalidArgumentError('Invalid params')
     }
 
-    try {
-      const feed = await this.service.execute({ id: params.id })
+    const feed = await this.service.execute({ id: params.id })
 
-      return feed
-    } catch (error) {
-      return (error as Error).message
-    }
+    return feed
   }
 }

@@ -1,5 +1,7 @@
-import { Repository } from '../../../domain/shared/Repository.ts'
-import { Service } from '../../shared/Service.ts'
+import { Sources, sourcesValues } from '../../../domain/Feed/Feed'
+import { InvalidArgumentError } from '../../../domain/shared/error/InvalidArgumentError'
+import { Repository } from '../../../domain/shared/Repository'
+import { Service } from '../../shared/Service'
 
 export class FeedSaveService implements Service<void> {
   private repository: Repository
@@ -11,11 +13,12 @@ export class FeedSaveService implements Service<void> {
   async execute (params: Record<string, unknown> | undefined): Promise<void> {
     if (!params ||
         (!params.title || typeof params.title !== 'string') ||
+        (!params.subTitle || typeof params.subTitle !== 'string') ||
         (!params.url || typeof params.url !== 'string') ||
         (!params.author || typeof params.author !== 'string') ||
-        (!params.category || typeof params.category !== 'string') ||
+        (!params.source || typeof params.source !== 'string' || !sourcesValues.includes(params.source as Sources)) ||
         (!params.publishedAt || typeof params.publishedAt !== 'string' || isNaN(new Date(params.publishedAt).getTime()))) {
-      throw new Error('Invalid params')
+      throw new InvalidArgumentError('Invalid params')
     }
 
     await this.repository.save(params)

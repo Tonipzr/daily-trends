@@ -1,5 +1,5 @@
-import { FeedSaveService } from '../../../../src/application/feed/save/FeedSaveService.ts'
-import { RepositoryMock } from '../../../__mocks__/RepositoryMock.ts'
+import { FeedSaveService } from '../../../../src/application/feed/save/FeedSaveService'
+import { RepositoryMock } from '../../../__mocks__/RepositoryMock'
 
 describe('FeedSaveService', () => {
   let service: FeedSaveService
@@ -14,9 +14,10 @@ describe('FeedSaveService', () => {
   it('should call save when valid params', async () => {
     const params: Record<string, unknown> = {
       title: 'Title 1',
+      subTitle: 'Subtitle 1',
       url: 'URL 1',
       author: 'Description 1',
-      category: 'Content 1',
+      source: 'Custom',
       publishedAt: new Date().toISOString()
     }
 

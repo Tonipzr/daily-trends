@@ -2,6 +2,7 @@
     "imports": [
       { "resource": "./api/application.json" },
       { "resource": "./DailyTrends/application.json" },
+      { "resource": "./scraper/application.json" },
       { "resource": "./shared/application.json" }
     ]
   }
