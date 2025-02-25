@@ -12,7 +12,7 @@ export async function registerRoutes () : Promise<void> {
 }
 
 async function register (routePath: string) : Promise<void> {
-  const route = require(routePath) // FIXME: This is a workaround to make the import work in windows
+  const route = require(routePath)
 
   const server: Server = container.get('Shared.Server')
 
